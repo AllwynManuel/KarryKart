@@ -14,5 +14,6 @@ namespace Contracts.IServices
         Task<Parent_Catg> AddParentCat(Parent_Catg parcatg);
         Task<Parent_Catg> UpdateParentCat(Parent_Catg parcatg);
         Task DeleteParentCat(int parcatgId);
+        Task<IQueryable<Parent_Catg>> GetParentCategoryByValue(string name);
     }
 }

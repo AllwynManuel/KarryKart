@@ -1,8 +1,10 @@
 ﻿using Contracts.IServices;
 using Entities.Models.ManufacturesClass;
+using Entities.Models.ParentCatgoriesClass;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Numerics;
 
 namespace KarryKart.Controllers
@@ -51,6 +53,12 @@ namespace KarryKart.Controllers
         {
             await _manufacturer.DeleteManufacturer(id);
             return NoContent();
+        }
+        [HttpGet("GetManufacturerByValue")]
+        public async Task<ActionResult<IQueryable<Manufacturer>>> GetManufacturerByValues(string name)
+        {
+            var pro = await _manufacturer.GetmanufacturerByValue(name);
+            return Ok(pro);
         }
     }
 }

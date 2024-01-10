@@ -1,5 +1,6 @@
 ﻿using Contracts.IServices;
 using Entities.Data;
+using Entities.Models.Enums;
 using Entities.Models.ParentCatgoriesClass;
 using Entities.Models.ProductClass;
 using Microsoft.EntityFrameworkCore;
@@ -89,6 +90,13 @@ namespace Parentcategory
                 return result;
 
             }
+        public Task<IQueryable<Inventory>> SearchbyWareHouse(WarehouseEnum status)
+        {
+            var result = appDbContext.Inventory.
+                Where(v => v.warehouse == status);
+
+            return Task.FromResult(result.AsQueryable());
         }
+    }
 
 }

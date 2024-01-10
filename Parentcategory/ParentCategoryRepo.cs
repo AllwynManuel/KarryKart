@@ -58,6 +58,15 @@ namespace Parentcategory
                 await _dataContext.SaveChangesAsync();
             }
         }
+        public async Task<IQueryable<Parent_Catg>> GetParentCategoryByValue(string name)
+        {
+
+            var query = from value in _dataContext.Parent_Catgs
+                        where value.Parent_Catg_Name == name || value.CreatedBy == name
+                        select value;
+
+            return query;
+        }
 
     }
 }

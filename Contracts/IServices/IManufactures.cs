@@ -15,5 +15,6 @@ namespace Contracts.IServices
         Task<Manufacturer> AddManufacturer(Manufacturer manufacturer);
         Task<Manufacturer> UpdateManufacturer(Manufacturer manufacturer);
         Task DeleteManufacturer(int manufacturerid);
+        Task<IQueryable<Manufacturer>> GetmanufacturerByValue(string name);
     }
 }

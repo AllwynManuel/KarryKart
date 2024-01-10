@@ -2,6 +2,7 @@ using Authentication.Auth;
 using Categorynamespace;
 using Contracts.IServices;
 using Entities.Data;
+using Entities.Models.ProductClass;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

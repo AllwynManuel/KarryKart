@@ -2,6 +2,7 @@
 using Entities.Data;
 using Entities.Models.CategoryClass;
 using Entities.Models.ManufacturesClass;
+using Entities.Models.ParentCatgoriesClass;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,15 @@ namespace Parentcategory
                 _dataContext.Manufacturers.Remove(result);
                 await _dataContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<IQueryable<Manufacturer>> GetmanufacturerByValue(string name)
+        {
+            var query = from value in _dataContext.Manufacturers
+                        where value.ManufacturerName == name
+                        select value;
+
+            return query;
         }
     }
 }

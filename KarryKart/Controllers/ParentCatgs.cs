@@ -1,5 +1,6 @@
 ﻿using Contracts.IServices;
 using Entities.Models.ParentCatgoriesClass;
+using Entities.Models.ProductClass;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,12 @@ namespace KarryKart.Controllers
         {
             await _context.DeleteParentCat(id);
             return NoContent();
+        }
+        [HttpGet("GetParentCatbByName")]
+        public async Task<ActionResult<IQueryable<Parent_Catg>>> GetParentByName(string name)
+        {
+            var pro = await _context.GetParentCategoryByValue(name);
+            return Ok(pro);
         }
     }
 }

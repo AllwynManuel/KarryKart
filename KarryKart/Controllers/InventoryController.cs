@@ -1,4 +1,5 @@
 ﻿using Contracts.IServices;
+using Entities.Models.Enums;
 using Entities.Models.ProductClass;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -59,6 +60,12 @@ namespace KarryKart.Controllers
 
             await _iInventoryRepository.DeleteInventory(id);
             return NoContent();
+        }
+        [HttpGet("GetInventoryByEnum")]
+        public async Task<ActionResult<IQueryable<Inventory>>> GetInventoryByEnum(WarehouseEnum status)
+        {
+            var result = await _iInventoryRepository.SearchbyWareHouse(status);
+            return Ok(result);
         }
     }
 }
